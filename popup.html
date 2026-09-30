@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Guard</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <span class="logo">🧠</span>
+      <h1>Study Guard</h1>
+    </header>
+
+    <section class="session-card">
+      <div id="status-label" class="status-label">Not focusing</div>
+      <div id="timer" class="timer">00:00</div>
+      <button id="toggle-btn" class="toggle-btn">Start Focus Session</button>
+    </section>
+
+    <section class="thoughts-section">
+      <div class="section-header">
+        <h2>Captured Thoughts</h2>
+        <span class="hint">Ctrl+Shift+T anywhere</span>
+      </div>
+      <ul id="thoughts-list" class="thoughts-list">
+        <li class="empty-state">Nothing captured yet. Good sign, or you haven't tried.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <span id="stats" class="stats">0 sessions · 0 thoughts captured</span>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
