@@ -36,7 +36,7 @@ h1 { font-size: 16px; font-weight: 700; color: #f8fafc; }
   margin-bottom: 6px;
 }
 
-.status-label.active { color: #4ade80; }
+.status-label.active { color:  #22a13a; }
 
 .timer {
   font-size: 32px;
@@ -51,7 +51,7 @@ h1 { font-size: 16px; font-weight: 700; color: #f8fafc; }
   padding: 10px;
   border: none;
   border-radius: 8px;
-  background: #4f46e5;
+  background: #249435;
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -59,7 +59,7 @@ h1 { font-size: 16px; font-weight: 700; color: #f8fafc; }
   transition: background 0.15s ease;
 }
 
-.toggle-btn:hover { background: #4338ca; }
+.toggle-btn:hover { background: #175d32; }
 
 .toggle-btn.active {
   background: #dc2626;
@@ -89,6 +89,25 @@ h1 { font-size: 16px; font-weight: 700; color: #f8fafc; }
   padding: 2px 6px;
   border-radius: 4px;
 }
+
+.capture-box { margin-bottom: 10px; }
+
+.capture-box input {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.capture-box input::placeholder { color: #64748b; }
+
+.capture-box input:focus { border-color: #4f46e5; }
 
 .thoughts-list {
   list-style: none;
@@ -124,6 +143,19 @@ h1 { font-size: 16px; font-weight: 700; color: #f8fafc; }
   color: #4ade80;
   cursor: pointer;
   font-size: 14px;
+}
+
+.thoughts-list li .delete-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0 2px;
+}
+
+.thoughts-list li .delete-btn:hover {
+  color: #f87171;
 }
 
 .empty-state {

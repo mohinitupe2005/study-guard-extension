@@ -3,6 +3,7 @@ const statusLabel = document.getElementById("status-label");
 const timerEl = document.getElementById("timer");
 const thoughtsList = document.getElementById("thoughts-list");
 const statsEl = document.getElementById("stats");
+const captureInput = document.getElementById("capture-input");
 
 let timerInterval = null;
 
@@ -53,8 +54,19 @@ async function render() {
         <span class="text" style="${t.done ? "text-decoration:line-through;color:#64748b" : ""}">${escapeHtml(t.text)}</span>
         <span class="time">${time}</span>
         <button class="done-btn" data-id="${t.id}" title="Mark done">${t.done ? "↺" : "✓"}</button>
+        <button class="delete-btn" data-id="${t.id}" title="Delete">✕</button>
       `;
       thoughtsList.appendChild(li);
+    });
+
+    thoughtsList.querySelectorAll(".delete-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const id = btn.dataset.id;
+        const data = await chrome.storage.local.get("thoughts");
+        const updated = (data.thoughts || []).filter((t) => t.id !== id);
+        await chrome.storage.local.set({ thoughts: updated });
+        render();
+      });
     });
 
     thoughtsList.querySelectorAll(".done-btn").forEach((btn) => {
@@ -92,6 +104,22 @@ toggleBtn.addEventListener("click", async () => {
     });
   }
   render();
+});
+
+captureInput.addEventListener("keydown", async (e) => {
+  if (e.key === "Enter" && captureInput.value.trim()) {
+    const data = await chrome.storage.local.get("thoughts");
+    const thoughts = data.thoughts || [];
+    thoughts.push({
+      id: crypto.randomUUID(),
+      text: captureInput.value.trim(),
+      timestamp: Date.now(),
+      done: false,
+    });
+    await chrome.storage.local.set({ thoughts });
+    captureInput.value = "";
+    render();
+  }
 });
 
 chrome.storage.onChanged.addListener((changes, area) => {

@@ -1,4 +1,4 @@
-// Background service worker Manifest V3
+// Background service worker (Manifest V3)
 
 // Listen for the global keyboard shortcut (Ctrl+Shift+T)
 chrome.commands.onCommand.addListener((command) => {

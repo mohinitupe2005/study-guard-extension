@@ -1,34 +1,34 @@
-//Sarcastic lines
+// ---- Sarcastic lines (static for V1 — swap for AI-generated later) ----
 const SARCASM_LINES = [
   "Oh good, you're here. Your grades were getting too high anyway.",
   "\"Just 5 minutes,\" said everyone, right before losing 40.",
-  "Wow, Instagram missed you... It's been a whole hour!!!",
+  "Wow, Instagram missed you! It's been a whole hr!!",
   "Your future self just felt a disturbance in the force.",
-  "Bold move opening this during a focus session. Confidence is nice.",
+  "Bold move opening this during a focus session! Confidence is nice👍",
   "This is the same brain that said 'I'll start studying at 9 sharp.'",
-  "The algorithm thanks you for your sacrifice.",
-  "Loading... your excuses, that is.",
+  "The algorithm thanks you for your sacrifice",
+  "Loading... your excuses, that is!",
   "You could've written a whole paragraph of notes in the time it took to open this.",
   "Ah yes, 'research.' Very academic of you.",
   "Somewhere, your syllabus just sighed.",
   "Plot twist: the internship doesn't apply to itself.",
   "This tab again? We meet like old, disappointing friends.",
-  "Your focus session called. It wants a divorce.",
+  "Your focus session called... It wants a divorce.",
   "Quick reminder: scrolling is not a study technique, no matter how it feels.",
   "You have the willpower of a browser tab. Multiple, actually.",
   "Impressive reflexes — instantly redirected the moment things got hard.",
-  "Let me guess, 'just checking one notification.'",
-  "Your exam is not going to be impressed by this.",
-  "10/10 timing. Truly the moment your brain needed a break from thinking.",
+  "Let me guess, 'just checking one notification',right?",
+  "Your exam is not going to be impressed by this!!",
+  "10/10 timing...Truly the moment your brain needed a break from thinking.",
 ];
 
 const DISTRACTING_HOSTS = [
   "instagram.com",
+  "youtube.com",
   "facebook.com",
   "twitter.com",
   "x.com",
   "reddit.com",
-  "youtube.com"
 ];
 
 function isDistractingSite() {
@@ -39,7 +39,7 @@ function randomLine() {
   return SARCASM_LINES[Math.floor(Math.random() * SARCASM_LINES.length)];
 }
 
-// ---- Sarcasm interstitial overlay ----
+//Sarcasm interstitial overlay
 function showSarcasmOverlay() {
   if (document.getElementById("sg-sarcasm-overlay")) return;
 
@@ -80,7 +80,7 @@ async function logInterruption(choice) {
   await chrome.storage.local.set({ interruptions });
 }
 
-// ---- Quick-capture overlay ----
+//Quick-capture overlay
 function showCaptureOverlay() {
   if (document.getElementById("sg-capture-overlay")) return;
 
@@ -137,14 +137,14 @@ function showConfirmation() {
   setTimeout(() => toast.remove(), 2200);
 }
 
-// Message listener 
+// Message listener
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "OPEN_CAPTURE_OVERLAY") {
     showCaptureOverlay();
   }
 });
 
-// Check on page load whether this is a distracting site during an active session
+//Check on page load whether this is a distracting site during an active session
 (async function init() {
   if (!isDistractingSite()) return;
   const { sessionActive } = await chrome.storage.local.get("sessionActive");
